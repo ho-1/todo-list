@@ -40,6 +40,7 @@ public class TodoService {
 		return repository.findByUserId(entity.getUserId());
 	}
 	
+	// entity 검증 메서드
 	public void validate(final TodoEntity entity) {
 		if(entity == null) {
 			log.warn("Entity cannot be null");
@@ -65,6 +66,24 @@ public class TodoService {
 		// 2.넘겨받은 엔티티 id를 이용해 TodoEntity를 가져온다. 존재하지 않는 엔티티는 업데이트할 수 없기 때문이다.
 		final Optional<TodoEntity> original = repository.findById(entity.getId());
 		
+		original.ifPresent(todo -> {
+			// 3.반환된 TodoEntity가 존재하면 값을 새 entity 값으로 덮어 씌운다.
+			todo.setTitle(entity.getTitle());
+			todo.setDone(entity.isDone());
+			
+			// 4.데이터베이스에 새 값을 저장한다.
+			repository.save(todo);
+		});
+		return retrieve(entity.getUserId());
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
