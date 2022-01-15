@@ -31,11 +31,6 @@ public class TodoService {
 		// Validations (∞À¡ı)
 		validate(entity);
 		
-		if (entity.getUserId() == null) {
-			log.warn("Unknown user.");
-			throw new RuntimeException("Unknown user.");
-		}
-		
 		repository.save(entity);
 		
 		log.info("Entity Id : {} id sved.", entity.getId());
@@ -47,6 +42,11 @@ public class TodoService {
 		if(entity == null) {
 			log.warn("Entity cannot be null");
 			throw new RuntimeException("Entity cannot be null.");
+		}
+		
+		if (entity.getUserId() == null) {
+			log.warn("Unknown user.");
+			throw new RuntimeException("Unknown user.");
 		}
 	}
 }
