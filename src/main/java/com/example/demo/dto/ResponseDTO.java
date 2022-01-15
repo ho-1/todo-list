@@ -16,4 +16,4 @@ public class ResponseDTO<T> {
 	private List<T> data;
 }
 
-// TodoDTO »Ó¸¸ ¾Æ´Ï¶ó ´Ù¸¥ ¸ðµ¨ÀÇ DTOµµ ResponseDTO¸¦ ÀÌ¿ëÇØ ¸®ÅÏÇÒ ¼ö ÀÖ°Ô Á¦³Ê¸¯À» ÀÌ¿ëÇß´Ù.
+// TodoDTO ë¿ë§Œ ì•„ë‹ˆë¼ ë‹¤ë¥¸ ëª¨ë¸ì˜ DTOë„ ResponseDTOë¥¼ ì´ìš©í•´ ë¦¬í„´í•  ìˆ˜ ìžˆê²Œ ì œë„ˆë¦­ì„ ì´ìš©í–ˆë‹¤.

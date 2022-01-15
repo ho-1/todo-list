@@ -9,9 +9,9 @@ import com.example.demo.model.TodoEntity;
 
 @Repository
 public interface TodoRepository extends JpaRepository<TodoEntity, String> {
-	// JpaRepository<T, ID> - T´Â ¸ÅÇÎµÉ ¿£Æ¼Æ¼ Å¬·¡½º, ID´Â ±âº» Å°ÀÇ Å¸ÀÔ
+	// JpaRepository<T, ID> - TëŠ” ë§¤í•‘ë  ì—”í‹°í‹° í´ë˜ìŠ¤, IDëŠ” ê¸°ë³¸ í‚¤ì˜ íƒ€ì…
 	
-	// ?1Àº ¸Ş¼­µåÀÇ ¸Å°³º¯¼öÀÇ ¼ø¼­ À§Ä¡´Ù.
+	// ?1ì€ ë©”ì„œë“œì˜ ë§¤ê°œë³€ìˆ˜ì˜ ìˆœì„œ ìœ„ì¹˜ë‹¤.
 	//@Query("select * from Todo t where t.userId = ?1")
 	List<TodoEntity> findByUserId(String userId);
 }
