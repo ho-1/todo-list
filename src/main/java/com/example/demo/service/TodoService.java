@@ -29,10 +29,7 @@ public class TodoService {
 	
 	public List<TodoEntity> create(final TodoEntity entity) {
 		// Validations (∞À¡ı)
-		if(entity == null) {
-			log.warn("Entity cannot be null");
-			throw new RuntimeException("Entity cannot be null.");
-		}
+		validate(entity);
 		
 		if (entity.getUserId() == null) {
 			log.warn("Unknown user.");
@@ -44,5 +41,12 @@ public class TodoService {
 		log.info("Entity Id : {} id sved.", entity.getId());
 		
 		return repository.findByUserId(entity.getUserId());
+	}
+	
+	public void validate(final TodoEntity entity) {
+		if(entity == null) {
+			log.warn("Entity cannot be null");
+			throw new RuntimeException("Entity cannot be null.");
+		}
 	}
 }
