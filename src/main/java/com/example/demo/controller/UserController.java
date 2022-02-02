@@ -28,6 +28,7 @@ public class UserController {
 	@Autowired
 	private TokenProvider tokenProvider;
 	
+	// Bean으로 작성해도 됨.
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@PostMapping("/signup")
@@ -37,10 +38,9 @@ public class UserController {
 			UserEntity user = UserEntity.builder()
 							.email(userDTO.getEmail())
 							.username(userDTO.getUsername())
-							.password(userDTO.getPassword())
+							.password(passwordEncoder.encode(userDTO.getPassword()))
 							.build();
 			// 서비스를 이용해 리파지토리에 유저 저장
-			System.out.println(user);
 			UserEntity registeredUser = userService.create(user);
 			UserDTO responseUserDTO = UserDTO.builder()
 							.email(registeredUser.getEmail())
@@ -64,7 +64,6 @@ public class UserController {
 						userDTO.getEmail(),
 						userDTO.getPassword(),
 						passwordEncoder);
-
 		if(user != null) {
 			// 토큰 생성
 			final String token = tokenProvider.create(user);
